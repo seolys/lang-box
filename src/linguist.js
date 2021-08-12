@@ -80,8 +80,11 @@ export const runLinguist = async (files) => {
   await run(`git add . && git commit -m "dummy"`);
 
   const stdout = await run("github-linguist --breakdown");
+  console.log("res: " + JSON.stringify(res));
+  
   const res = parseOutput(stdout);
-
+  console.log("res: " + JSON.stringify(res));
+  
   const langs = Object.entries({ ...res })
     .reduce((acc, [name, v]) => {
       acc.push({
