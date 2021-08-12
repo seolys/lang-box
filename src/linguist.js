@@ -82,7 +82,7 @@ export const runLinguist = async (files) => {
   await run(`git add . && git commit -m "dummy"`);
 
   const stdout = await run("github-linguist --breakdown");
-  console.log("res: " + JSON.stringify(res));
+  console.log("res: " + JSON.stringify(stdout));
   
   const res = parseOutput(stdout);
   console.log("res: " + JSON.stringify(res));
