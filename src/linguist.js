@@ -22,15 +22,15 @@ const parseOutput = (text) => {
     console.log("line: " + line);
     let mv = line.match(/^(?<percent>[\d.]+)%\s+(?<count>\w+)\s+(?<language>\w+)/)?.groups;
     if (mv) {
-//       map[mv.language] = { percent: mv.percent, paths: [] };
-      return;
-    }
-    
-    mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
-    if (mv) {
       map[mv.language] = { percent: mv.percent, paths: [] };
       return;
     }
+    
+//     mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
+//     if (mv) {
+//       map[mv.language] = { percent: mv.percent, paths: [] };
+//       return;
+//     }
     if (line.match(/^$/)) {
       parsingLang = "";
       return;
