@@ -22,11 +22,11 @@ const parseOutput = (text) => {
     console.log("line: " + line);
     let mv = line.match(/^(?<percent>[\d.]+)%\s+(?<count>\w+)\s+(?<language>\w+)/)?.groups;
     if (mv) {
-      map[mv.language] = { percent: mv.percent, paths: [] };
+//       map[mv.language] = { percent: mv.percent, paths: [] };
       return;
     }
     
-    mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
+    let mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
     if (mv) {
       map[mv.language] = { percent: mv.percent, paths: [] };
       return;
@@ -88,7 +88,7 @@ export const runLinguist = async (files) => {
   await run(`git add . && git commit -m "dummy"`);
 
   const stdout = await run("github-linguist --breakdown");
-  console.log("res: " + JSON.stringify(stdout));
+  console.log("stdout: " + JSON.stringify(stdout));
   
   const res = parseOutput(stdout);
   console.log("res: " + JSON.stringify(res));
